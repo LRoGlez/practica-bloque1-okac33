@@ -122,6 +122,11 @@ function clickBody() {
   alert("body");
 }
 
+document
+  .getElementsByTagName("body")
+  .item(0)
+  .addEventListener("click", clickBody, false);
+
 function clickItem(color, event) {
   event.stopPropagation();
   alert(color);
@@ -149,10 +154,7 @@ function changeColor(color, event) {
   body.style.backgroundColor = color;
 }
 
-document
-  .getElementsByTagName("body")
-  .item(0)
-  .addEventListener("click", clickBody, false);
+
 
 /**let illist=[
  item = document.createElement("li"),
