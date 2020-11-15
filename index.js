@@ -115,12 +115,12 @@ function runIl(list) {
     newLi.append(div2);
     newLi.append(bt1);
     newLi.append(bt2);
-  }
-}
+  };
+};
 
 function clickBody() {
   alert("body");
-}
+};
 
 document
   .getElementsByTagName("body")
@@ -130,7 +130,7 @@ document
 function clickItem(color, event) {
   event.stopPropagation();
   alert(color);
-}
+};
 
 function clickBt1(color, name, event) {
   event.stopPropagation();
@@ -140,53 +140,18 @@ function clickBt1(color, name, event) {
     let change = listbt1.item(1);
     if (change.getElementsByTagName("div").item(0).textContent == name) {
       if (i == 8) {
-        change = listbt1.item(1).style.backgroundColor = color;
+        change = listbt1.item(i).style.backgroundColor = color;
       } else {
         change.nextSibling.style.backgroundColor = color;
       }
     }
   }
-}
+};
 
 function changeColor(color, event) {
   event.stopPropagation();
   let body = document.getElementsByTagName("body").item(0);
   body.style.backgroundColor = color;
-}
+};
 
 
-
-/**let illist=[
- item = document.createElement("li"),
- item2 = document.createElement("li"),
- item3 = document.createElement("li"),
- item4 = document.createElement("li"),
- item5 = document.createElement("li"),
- item6 = document.createElement("li"),
- item7 = document.createElement("li"),
- item8 = document.createElement("li"),
-];
-let empezar = document.querySelector(".color-list-title");
-
-/**console.log(empezar);
-/**empezar.appendChild(item);
-empezar.appendChild(item2);
-empezar.appendChild(item3);
-empezar.appendChild(item4);
-empezar.appendChild(item5);
-empezar.appendChild(item6);
-empezar.appendChild(item7);
-empezar.appendChild(item8);
-
-let divNWhite = document.createElement("div");
-let divMWhite = document.createElement("div");
-let button1w = document.createElement("button");
-button1w.type = "button";
-button1w.innerText = "next item color";
-let button2w = document.createElement("button");
-button2w.type = "button";
-button2w.innerText = "page color";
-
-for (let i = 0; i < empezar.length; i++) {
-  empezar[i].classList.add("color-list");
-}*/
