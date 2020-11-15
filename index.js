@@ -61,18 +61,53 @@ const colorList = [
   }
 ];
 
-let item = document.createElement("li");
-let item2 = document.createElement("li");
-let item3 = document.createElement("li");
-let item4 = document.createElement("li");
-let item5 = document.createElement("li");
-let item6 = document.createElement("li");
-let item7 = document.createElement("li");
-let item8 = document.createElement("li");
+let start = document.getElementsByTagName("ul").item(0);
 
+runIl(start);
+
+function runIl(list){
+  let txtDiv2 = "Muestra";
+
+  for(let i=0; i<colorList.length; i++){
+    let txtDiv= colorList[i].colorName;
+    let cdiv2=colorList[i].hex;
+
+    let div= document.createElement("div");
+    div.innerText =txtDiv;
+    div.classList.add("color-name");
+    div.addEventListener("click", function(){clickDiv(txtDiv,event)},true);
+
+    let div2= document.createElement("div");
+    div2.classList.add("color-show");
+    div2.innerText= txtDiv2;
+    div2.style.backgroundColor=cdiv2;
+
+    let bt1= document.createElement("button");
+    bt1.innerText = "Next Item Color";
+    bt1.classList.add("color-set");
+    bt1.addEventListener("click",function(){clickNext(cdiv2, txtDiv, event)}, false);
+
+    let bt2= document.createElement("button");
+    bt2.innerText="Page Color";
+    bt2.classList.add("color-set");
+    bt2.addEventListener("click", function(){setColor(cdiv2, event)}, false);
+  }
+}
+
+/**let illist=[
+ item = document.createElement("li"),
+ item2 = document.createElement("li"),
+ item3 = document.createElement("li"),
+ item4 = document.createElement("li"),
+ item5 = document.createElement("li"),
+ item6 = document.createElement("li"),
+ item7 = document.createElement("li"),
+ item8 = document.createElement("li"),
+];
 let empezar = document.querySelector(".color-list-title");
-console.log(empezar);
-empezar.appendChild(item);
+
+/**console.log(empezar);
+/**empezar.appendChild(item);
 empezar.appendChild(item2);
 empezar.appendChild(item3);
 empezar.appendChild(item4);
@@ -92,4 +127,4 @@ button2w.innerText = "page color";
 
 for (let i = 0; i < empezar.length; i++) {
   empezar[i].classList.add("color-list");
-}
+}*/
