@@ -65,60 +65,94 @@ let start = document.getElementsByTagName("ul").item(0);
 
 runIl(start);
 
-function runIl(list){
+function runIl(list) {
   let txtDiv2 = "Muestra";
 
-  for(let i=0; i<colorList.length; i++){
-    let txtDiv= colorList[i].colorName;
-    let cdiv2=colorList[i].hex;
+  for (let i = 0; i < colorList.length; i++) {
+    let txtDiv = colorList[i].colorName;
+    let cdiv2 = colorList[i].hex;
 
-    let div= document.createElement("div");
-    div.innerText =txtDiv;
+    let div = document.createElement("div");
+    div.innerText = txtDiv;
     div.classList.add("color-name");
-    div.addEventListener("click", function(){clickItem(txtDiv,event)},true);
+    div.addEventListener(
+      "click",
+      function() {
+        clickItem(txtDiv, event);
+      },
+      true
+    );
 
-    let div2= document.createElement("div");
+    let div2 = document.createElement("div");
     div2.classList.add("color-show");
-    div2.innerText= txtDiv2;
-    div2.style.backgroundColor=cdiv2;
+    div2.innerText = txtDiv2;
+    div2.style.backgroundColor = cdiv2;
 
-    let bt1= document.createElement("button");
+    let bt1 = document.createElement("button");
     bt1.innerText = "Next Item Color";
     bt1.classList.add("color-set");
-    bt1.addEventListener("click",function(){clickBt1(cdiv2, txtDiv, event)}, false);
+    bt1.addEventListener(
+      "click",
+      function() {
+        clickBt1(cdiv2, txtDiv, event);
+      },
+      false
+    );
 
-    let bt2= document.createElement("button");
-    bt2.innerText="Page Color";
+    let bt2 = document.createElement("button");
+    bt2.innerText = "Page Color";
     bt2.classList.add("color-set");
-    bt2.addEventListener("click", function(){setColor(cdiv2, event)}, false);
+    bt2.addEventListener(
+      "click",
+      function() {
+        changeColor(cdiv2, event);
+      },
+      false
+    );
 
     let newLi = document.createElement("li");
     newLi.append(div);
     newLi.append(div2);
     newLi.append(bt1);
     newLi.append(bt2);
-  };
+  }
 }
 
-function clickBody(){
+function clickBody() {
   alert("body");
 }
 
-function clickItem(color, event){
+function clickItem(color, event) {
   event.stopPropagation();
   alert(color);
 }
 
-function clickBt1(color, name, event){
+function clickBt1(color, name, event) {
   event.stopPropagation();
-  let listbt1= start.children;
+  let listbt1 = start.children;
 
-   for(let i=1; i<listbt1.length; i++){
-     
-   }
+  for (let i = 1; i < listbt1.length; i++) {
+    let change = listbt1.item(1);
+    if (change.getElementsByTagName("div").item(0).textContent == name) {
+      if (i == 8) {
+        change = listbt1.item(1).style.backgroundColor = color;
+      } else {
+        change.nextSibling.style.backgroundColor = color;
+      }
+    }
+  }
 }
 
-document.getElementsByTagName("body").item(0).addEventListener("click",clickBody, false);
+function changeColor(color, event) {
+  event.stopPropagation();
+  let body = document.getElementsByTagName("body").item(0);
+  body.style.backgroundColor = color;
+}
+
+document
+  .getElementsByTagName("body")
+  .item(0)
+  .addEventListener("click", clickBody, false);
 
 /**let illist=[
  item = document.createElement("li"),
